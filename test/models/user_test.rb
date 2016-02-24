@@ -82,4 +82,15 @@ class UserTest < ActiveSupport::TestCase
       @user.destroy
     end
   end
+  
+  test "should follow and unfollow a user" do
+    tucker = users(:tucker)
+    carmina = users(:carmina)
+    assert_not tucker.following?(carmina)
+    tucker.follow(carmina)
+    assert tucker.following?(carmina)
+    assert carmina.followers.include?(tucker)
+    tucker.unfollow(carmina)
+    assert_not tucker.following?(carmina)
+  end
 end
