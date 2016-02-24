@@ -93,4 +93,22 @@ class UserTest < ActiveSupport::TestCase
     tucker.unfollow(carmina)
     assert_not tucker.following?(carmina)
   end
+  
+  test "feed should have the right posts" do
+    tucker = users(:tucker)
+    carmina = users(:carmina)
+    mike = users(:mike)
+    # Posts from followed user
+    mike.microposts.each do |post_following|
+      assert tucker.feed.include?(post_following)
+  end
+  # Posts from self
+  tucker.microposts.each do |post_self|
+    assert tucker.feed.include?(post_self)
+  end
+  # Posts from unfollowed user
+  carmina.microposts.each do |post_unfollowed|
+    assert_not tucker.feed.include?(post_unfollowed)
+    end
+  end
 end
