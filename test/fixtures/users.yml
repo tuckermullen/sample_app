@@ -13,7 +13,7 @@ carmina:
   activated: true
   activated_at: <%= Time.zone.now %>
   
-Mike:
+mike:
   name: Mike Example
   email: mike@example.com
   password_digest: <%= User.digest('password') %>

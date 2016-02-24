@@ -1,0 +1,15 @@
+one:
+  follower: tucker
+  followed: mike
+  
+two:
+  follower: tucker
+  followed: taylor
+  
+three:
+  follower: mike
+  followed: tucker
+  
+four:
+  follower: carmina
+  followed: tucker
